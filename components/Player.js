@@ -86,13 +86,13 @@ function Player({
       };
     return (
         <div className=" container h-24 min-h-full flex flex-col justify-between items-center">
-            <div className="flex items-center w-auto">
-                <p>{getTime(songInfo.currentTime)}</p>
+            <div className="flex p-2 items-center w-auto">
+                <p className="mr-2 bg-gray-500 rounded-md p-1">{getTime(songInfo.currentTime)}</p>
                 <div className=" w-max h-4 relative overflow-hidden rounded-lg bg-gradient-to-l md:bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
                     <input className="w-auto bg-transparent cursor-pointer" type="range" value={songInfo.currentTime} min={0} max={songInfo.duration || 0} onChange={dragHandler} />
                     <div style={trackAnim} className="w-max h-full absolute  transform p-1 pointer-events-none"></div>
                 </div>
-                <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
+                <p className="ml-2 bg-gray-500 rounded-md p-1">{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
             </div>
             <div className="flex items-center justify-between p-1 w-auto">
                         <Button
@@ -122,6 +122,7 @@ function Player({
                             color="white"
                             buttonType="outline"
                             rounded={true}
+                            onClick={() => skipTrackHandler("skip-forward")}
                             iconOnly={true}
                             ripple={"dark"}
                             className="  h-15 w-10 border-0"
@@ -131,6 +132,7 @@ function Player({
                         <Button
                             color="white"
                             buttonType="outline"
+                            onClick={() => setActiveVolume(!activeVolume)}
                             rounded={true}
                             iconOnly={true}
                             ripple={"dark"}
@@ -138,7 +140,10 @@ function Player({
                         >
                             <Icon name="volume_down" size="3xl" color="gray"/>
                         </Button>
-                        <input  className="focus:outline-none w-auto  " type="range" max="1" min="0" step="0.01"/>
+                        {activeVolume && (
+                            <input  className="focus:outline-none w-auto  "  onChange={changeVolume}  value={songInfo.volume} type="range" max="1" min="0" step="0.01"/>
+                        )}
+                        
             </div>
             
         </div>

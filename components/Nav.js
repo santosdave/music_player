@@ -6,14 +6,14 @@ function Nav({ setLibraryStatus, libraryStatus }) {
       };
     return (
         <nav className="container h-24 min-h-full flex justify-around items-center">
-            <h1>Waves</h1>
+            
                     <Button
                         color="white"
                         buttonType="outline"
                         rounded={true}
                         onClick={openLibraryHandler}
                         ripple={"dark"}
-                        className={`md:inline-flex h-15 w-22 md:z-10 border-0 hover:bg-gray-300 ${libraryStatus ? "library-active" : ""}`}
+                        className={`md:inline-flex h-15 w-22 md:z-10 border-0 hover:bg-gray-300 ${libraryStatus ? "-translate-x-0 opacity-1" : ""}`}
                     >
                     Library
                      <Icon name="music_note" size="3xl" color="gray"/>

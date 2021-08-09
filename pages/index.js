@@ -44,7 +44,7 @@ export default function Home() {
         <title>Music Player</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`p-3 ${libraryStatus ? "library-active" : ""}`}>
+      <main className={`p-3 ${libraryStatus ? "-translate-x-0 opacity-1" : ""}`}>
         <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}/>
         <Song isPlaying={isPlaying} currentSong={currentSong} />
       <Player
